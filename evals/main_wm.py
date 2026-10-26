@@ -43,7 +43,6 @@ from models.moshi.utils import bool_inst
 
 from training import get_validation_augs, get_dummy_augs
 from watermark.engine import get_wm_window_hash, GENERATOR
-from watermark.sync import SyncPattern
 
 def get_binomial_pval(x, n, p):
     """
@@ -256,6 +255,7 @@ def run_watermark_eval(args, clustering_maps=None, config_name="base"):
 
     # Configure synchronization if needed
     if args.wm_sync:
+        from watermark.sync import SyncPattern
         sync_pattern = SyncPattern()
         sync_pattern.to(args.device)
 
